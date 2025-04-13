@@ -44,6 +44,7 @@ func startNewGame(words *l.ListOfWords) {
 	}
 
 	for {
+		win := true
 		healthFlag := true
 		fmt.Print("Введите букву: ")
 		fmt.Scan(&char)
@@ -63,6 +64,16 @@ func startNewGame(words *l.ListOfWords) {
 
 		if healthPint == 7 {
 			fmt.Println("Вы проиграли! Загаданное слово: ", word)
+			break
+		}
+
+		for i, v := range word {
+			if secretWord[i] != v {
+				win = false
+			}
+		}
+		if win {
+			fmt.Println("Поздравляю вы выгирали! Загаданное слово: ", word)
 			break
 		}
 	}
